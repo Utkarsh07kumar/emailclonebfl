@@ -1,0 +1,24 @@
+﻿@model IEnumerable<gmail.Models.Email>
+
+<h1>Starred Messages</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>To</th>
+            <th>Subject</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var email in Model)
+        {
+            <tr>
+                <td>@email.To</td>
+                <td>@email.Subject</td>
+                <td>@email.SentDate.ToString("g")</td>
+            </tr>
+        }  
+
+    </tbody>
+</table>

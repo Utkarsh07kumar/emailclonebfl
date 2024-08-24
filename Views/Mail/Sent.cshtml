@@ -1,0 +1,52 @@
+﻿@model IEnumerable<gmail.Models.Email>
+
+@{
+    ViewData["Title"] = "Sent";
+}
+
+
+<h1>Sent</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>To</th>
+            <th>Subject</th>
+            <th>Message</th>
+            <th>file</th>
+            <th>Sent Date</th>
+            <th>Star</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var email in Model)
+        {
+            <tr>
+                <td>@email.To</td>
+                <td>@email.Subject</td>
+                <td>@email.Body</td>
+                <td>@email.Attachments</td>
+                <td>@email.SentDate</td>
+                <td>
+                    <form asp-action="ToggleStar" method="post">
+                        <input type="hidden" name="id" value="@email.Id" />
+                        <button type="submit" class="btn btn-link">
+                            @if (email.IsStarred)
+                            {
+                             
+                                <i class="fas fa-star text-warning" style="font-size: 24px;"></i>
+                            }
+                            else
+                            {
+                              
+                                <i class="far fa-star" style="font-size: 24px;"></i>
+                            }
+                        </button>
+                    </form>
+                </td>
+                
+            </tr>
+        }
+    </tbody>
+</table>

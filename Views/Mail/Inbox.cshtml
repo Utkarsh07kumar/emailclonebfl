@@ -1,0 +1,26 @@
+﻿@* @model IEnumerable<MimeKit.MimeMessage> *@
+@model IEnumerable<gmail.Models.Email>
+
+
+<h2>Inbox</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>From</th>
+            <th>Subject</th>
+            <th>Date</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var email in Model)
+        {
+            <tr>
+                <td>@email.To</td>
+                <td>@email.Subject</td>
+                <td>@email.SentDate</td>
+            </tr>
+        }
+    </tbody>
+</table>
